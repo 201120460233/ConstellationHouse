@@ -11,6 +11,7 @@
 #import "CHDefine.h"
 #import "CHConfig.h"
 #import "ConstellationModel.h"
+#import "NSDate+EX.h"
 
 @interface CHSearchResultVC ()
 
@@ -30,10 +31,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"查询结果";
-    //用新建文件的方式常见的plist文件，获取其路径
     NSString *filePath = [[NSBundle mainBundle] pathForResource:@"Constellation" ofType:@"plist"];
     NSArray *arr = [NSArray arrayWithContentsOfFile:filePath];
-    self.cModel = [[ConstellationModel alloc] initWithDic:arr[0]];
+    NSString *constellationName = [[NSDate date] getConstellationWithDate: self.dateStr];
+    for (NSDictionary *dic in arr) {
+        if ([dic[@"name"] isEqualToString:constellationName]) {
+            self.cModel = [[ConstellationModel alloc] initWithDic:dic];
+        }
+    }
     [self setupUI];
 }
 
@@ -105,13 +110,12 @@
     [self.scrollView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.view);
     }];
-    self.scrollView.showsVerticalScrollIndicator = YES;
     
     [self.scrollView addSubview:self.contentView];
     [self.contentView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.scrollView);
         make.width.equalTo(self.scrollView);
-        make.height.greaterThanOrEqualTo(@0.f);//此处保证容器View高度的动态变化 大于等于0.f的高度
+        make.height.greaterThanOrEqualTo(@0.f);//此处保证容器View高度的动态变化大于等于0.f的高度
     }];
     
     self.topLabel.text = [self.dateStr stringByAppendingString:@"出生"];
@@ -123,7 +127,6 @@
     }];
     
     [self.scrollView addSubview:self.bgView];
-    
     
     self.imgView.image = [UIImage imageNamed:self.cModel.icon];
     [self.scrollView addSubview:self.imgView];
