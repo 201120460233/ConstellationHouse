@@ -25,6 +25,10 @@
 		A47E938A211952600088556A /* CHSearchResultVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A47E9389211952600088556A /* CHSearchResultVC.m */; };
 		A47E938C21197F490088556A /* Constellation.plist in Resources */ = {isa = PBXBuildFile; fileRef = A47E938B21197F490088556A /* Constellation.plist */; };
 		A47E938F211A82060088556A /* ConstellationModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A47E938E211A82060088556A /* ConstellationModel.m */; };
+		A47E9398211AC7E70088556A /* NSDate+EX.m in Sources */ = {isa = PBXBuildFile; fileRef = A47E9397211AC7E70088556A /* NSDate+EX.m */; };
+		A47E939A211AD2CD0088556A /* Fortune.plist in Resources */ = {isa = PBXBuildFile; fileRef = A47E9399211AD2CD0088556A /* Fortune.plist */; };
+		A47E939D211AE8B50088556A /* CHFortuneDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A47E939C211AE8B50088556A /* CHFortuneDetailVC.m */; };
+		A47E93A1211AF6FB0088556A /* CHFortuneCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A47E939F211AEA3F0088556A /* CHFortuneCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +66,13 @@
 		A47E938B21197F490088556A /* Constellation.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Constellation.plist; sourceTree = "<group>"; };
 		A47E938D211A82060088556A /* ConstellationModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConstellationModel.h; sourceTree = "<group>"; };
 		A47E938E211A82060088556A /* ConstellationModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ConstellationModel.m; sourceTree = "<group>"; };
+		A47E9396211AC7E70088556A /* NSDate+EX.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSDate+EX.h"; sourceTree = "<group>"; };
+		A47E9397211AC7E70088556A /* NSDate+EX.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDate+EX.m"; sourceTree = "<group>"; };
+		A47E9399211AD2CD0088556A /* Fortune.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Fortune.plist; sourceTree = "<group>"; };
+		A47E939B211AE8B50088556A /* CHFortuneDetailVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CHFortuneDetailVC.h; sourceTree = "<group>"; };
+		A47E939C211AE8B50088556A /* CHFortuneDetailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CHFortuneDetailVC.m; sourceTree = "<group>"; };
+		A47E939E211AEA3F0088556A /* CHFortuneCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CHFortuneCell.h; sourceTree = "<group>"; };
+		A47E939F211AEA3F0088556A /* CHFortuneCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CHFortuneCell.m; sourceTree = "<group>"; };
 		CA95BB77C282621DA86B2E02 /* libPods-ConstellationHouse.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ConstellationHouse.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5274DD147CE7C4A83B7D97F /* Pods-ConstellationHouse.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ConstellationHouse.release.xcconfig"; path = "Pods/Target Support Files/Pods-ConstellationHouse/Pods-ConstellationHouse.release.xcconfig"; sourceTree = "<group>"; };
 		F8CF1970C593390FE01C52B3 /* Pods-ConstellationHouse.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ConstellationHouse.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ConstellationHouse/Pods-ConstellationHouse.debug.xcconfig"; sourceTree = "<group>"; };
@@ -156,6 +167,7 @@
 			isa = PBXGroup;
 			children = (
 				A47E938B21197F490088556A /* Constellation.plist */,
+				A47E9399211AD2CD0088556A /* Fortune.plist */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -179,6 +191,8 @@
 				A47E9389211952600088556A /* CHSearchResultVC.m */,
 				A47E937C211857F60088556A /* CHFortuneVC.h */,
 				A47E937D211857F60088556A /* CHFortuneVC.m */,
+				A47E939B211AE8B50088556A /* CHFortuneDetailVC.h */,
+				A47E939C211AE8B50088556A /* CHFortuneDetailVC.m */,
 				A47E937F2118580C0088556A /* CHPairVC.h */,
 				A47E93802118580C0088556A /* CHPairVC.m */,
 				A47E9382211858290088556A /* CHAstrolabeVC.h */,
@@ -192,6 +206,8 @@
 		A47E93672117F1CF0088556A /* View */ = {
 			isa = PBXGroup;
 			children = (
+				A47E939E211AEA3F0088556A /* CHFortuneCell.h */,
+				A47E939F211AEA3F0088556A /* CHFortuneCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -219,6 +235,8 @@
 		A47E93712117FA3A0088556A /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				A47E9396211AC7E70088556A /* NSDate+EX.h */,
+				A47E9397211AC7E70088556A /* NSDate+EX.m */,
 				A47E93722117FABF0088556A /* UIViewController+NavigationBar.h */,
 				A47E93732117FABF0088556A /* UIViewController+NavigationBar.m */,
 			);
@@ -301,6 +319,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A47E938C21197F490088556A /* Constellation.plist in Resources */,
+				A47E939A211AD2CD0088556A /* Fortune.plist in Resources */,
 				A47E93552117EE4E0088556A /* LaunchScreen.storyboard in Resources */,
 				A47E93522117EE4E0088556A /* Assets.xcassets in Resources */,
 				A47E93502117EE4B0088556A /* Main.storyboard in Resources */,
@@ -335,11 +354,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A47E93A1211AF6FB0088556A /* CHFortuneCell.m in Sources */,
+				A47E939D211AE8B50088556A /* CHFortuneDetailVC.m in Sources */,
 				A47E936C2117F8870088556A /* CHCommonNC.m in Sources */,
 				A47E9384211858290088556A /* CHAstrolabeVC.m in Sources */,
 				A47E937B211857AD0088556A /* CHSearchVC.m in Sources */,
 				A47E93622117F0B90088556A /* CHHomeVC.m in Sources */,
 				A47E93742117FABF0088556A /* UIViewController+NavigationBar.m in Sources */,
+				A47E9398211AC7E70088556A /* NSDate+EX.m in Sources */,
 				A47E938F211A82060088556A /* ConstellationModel.m in Sources */,
 				A47E9387211858390088556A /* CHZodiacVC.m in Sources */,
 				A47E93582117EE4E0088556A /* main.m in Sources */,
