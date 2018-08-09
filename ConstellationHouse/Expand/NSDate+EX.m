@@ -73,4 +73,19 @@
     return constellation;
 }
 
+/**
+ *  获取时间格式化字符串
+ *  @param form 格式化样式
+ *  @return 时间字符串
+ */
+- (NSString *)stringWithFormate:(NSString *)form {
+    NSDateFormatter *formate = [[NSDateFormatter alloc] init];
+    formate.dateFormat = form;
+    NSString *string = [formate stringFromDate:self];
+    if (string.length) {
+        return string;
+    }
+    return @"";
+}
+
 @end

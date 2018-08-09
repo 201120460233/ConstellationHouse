@@ -7,7 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 @interface NSAttributedString (EX)
+
++ (NSMutableAttributedString *)transWithString:(NSString *)str colorAttributeName:(NSArray *)colorAttriArr lineSpace:(CGFloat)lineSpace;
 
 @end

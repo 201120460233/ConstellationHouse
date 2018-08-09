@@ -14,5 +14,6 @@
 - (int)returnDay:(NSDate *)date;
 - (NSString *)getAstroWithMonth:(int)m day:(int)d;
 - (NSString *)getConstellationWithDate:(NSString *)dateStr;
+- (NSString *)stringWithFormate:(NSString *)form;
 
 @end
