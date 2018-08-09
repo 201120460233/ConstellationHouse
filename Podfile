@@ -10,8 +10,8 @@ target 'ConstellationHouse' do
     pod 'Masonry', '~> 1.1.0'
     pod 'SDWebImage', '~> 3.7.2'
     pod 'JPush'
-#    pod 'AVOSCloud'               # 数据存储、短信、云引擎调用等基础服务模块
-#    pod 'AVOSCloudIM'             # 即时通信模块
+    pod 'AVOSCloud'               # 数据存储、短信、云引擎调用等基础服务模块
+    pod 'AVOSCloudIM'             # 即时通信模块
     pod 'MBProgressHUD', '~> 1.1.0'
     pod 'Toast', '~> 4.0.0'
 

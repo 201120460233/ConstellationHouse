@@ -14,6 +14,16 @@ PODS:
   - AFNetworking/Serialization (3.2.1)
   - AFNetworking/UIKit (3.2.1):
     - AFNetworking/NSURLSession
+  - AVOSCloud (11.0.0)
+  - AVOSCloudIM (11.0.0):
+    - AVOSCloud (= 11.0.0)
+    - AVOSCloudIM/_ARC (= 11.0.0)
+    - AVOSCloudIM/_NOARC (= 11.0.0)
+  - AVOSCloudIM/_ARC (11.0.0):
+    - AVOSCloud (= 11.0.0)
+    - AVOSCloudIM/_NOARC (= 11.0.0)
+  - AVOSCloudIM/_NOARC (11.0.0):
+    - AVOSCloud (= 11.0.0)
   - JCore (1.2.0)
   - JPush (3.0.9):
     - JCore (~> 1.2.0)
@@ -26,6 +36,8 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking (~> 3.2.1)
+  - AVOSCloud
+  - AVOSCloudIM
   - JPush
   - Masonry (~> 1.1.0)
   - MBProgressHUD (~> 1.1.0)
@@ -35,6 +47,8 @@ DEPENDENCIES:
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - AFNetworking
+    - AVOSCloud
+    - AVOSCloudIM
     - JCore
     - JPush
     - Masonry
@@ -44,6 +58,8 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
+  AVOSCloud: 8ffa848f5f7391fc7594d3671a29cd6f8a14cc2a
+  AVOSCloudIM: 465af27feb394e50e1b09a7fd2da4645be340cdb
   JCore: b52e3dd73625eec70afd1244bb9c41038aa06087
   JPush: 48041e8c5ad2ef9b48709eb0888af9640b36e9b0
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
@@ -51,6 +67,6 @@ SPEC CHECKSUMS:
   SDWebImage: c325cf02c30337336b95beff20a13df489ec0ec9
   Toast: 91b396c56ee72a5790816f40d3a94dd357abc196
 
-PODFILE CHECKSUM: 2572c38fb708a2f901eb0ef3c59700988e0b49de
+PODFILE CHECKSUM: bebeb8a62d94d1a8da780c66b22d4d0c7980cc48
 
 COCOAPODS: 1.5.2
