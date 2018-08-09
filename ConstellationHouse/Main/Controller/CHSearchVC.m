@@ -9,7 +9,6 @@
 #import "CHSearchVC.h"
 #import "Masonry.h"
 #import "CHDefine.h"
-#import "CHConfig.h"
 #import "CHSearchResultVC.h"
 #import "Toast.h"
 

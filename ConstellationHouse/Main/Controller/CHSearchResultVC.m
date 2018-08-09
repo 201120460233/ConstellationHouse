@@ -9,9 +9,9 @@
 #import "CHSearchResultVC.h"
 #import "Masonry.h"
 #import "CHDefine.h"
-#import "CHConfig.h"
 #import "ConstellationModel.h"
 #import "NSDate+EX.h"
+#import "NSAttributedString+EX.h"
 
 @interface CHSearchResultVC ()
 
@@ -163,7 +163,7 @@
         NSRange range0 = NSMakeRange(0, [dic.allKeys[0] length]);
         NSRange range1 = NSMakeRange(str.length - [dic.allValues[0] length], [dic.allValues[0] length]);
         NSArray *arr = @[@{@"color": UIColorFromRGB(0x999999), @"range": NSStringFromRange(range0)}, @{@"color": UIColorFromRGB(0x000000), @"range": NSStringFromRange(range1)}];
-        label.attributedText = [self transWithString:str colorAttributeName:arr lineSpace:0.];
+        label.attributedText = [NSAttributedString transWithString:str colorAttributeName:arr lineSpace:0.];
         [self.scrollView addSubview:label];
         [label sizeToFit];
         [label mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -217,7 +217,7 @@
         NSRange range0 = NSMakeRange(0, [dic.allKeys[0] length]);
         NSRange range1 = NSMakeRange(str.length - [dic.allValues[0] length], [dic.allValues[0] length]);
         NSArray *arr = @[@{@"color": color, @"range": NSStringFromRange(range0)}, @{@"color": UIColorFromRGB(0x000000), @"range": NSStringFromRange(range1)}];
-        label.attributedText = [self transWithString:str colorAttributeName:arr lineSpace:0.];
+        label.attributedText = [NSAttributedString transWithString:str colorAttributeName:arr lineSpace:0.];
         [self.scrollView addSubview:label];
         [label sizeToFit];
         [label mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -255,7 +255,7 @@
         NSRange range0 = NSMakeRange(0, [dic.allKeys[0] length]);
         NSRange range1 = NSMakeRange(str.length - [dic.allValues[0] length], [dic.allValues[0] length]);
         NSArray *arr = @[@{@"color": [UIColor blueColor], @"range": NSStringFromRange(range0)}, @{@"color": UIColorFromRGB(0x000000), @"range": NSStringFromRange(range1)}];
-        label.attributedText = [self transWithString:str colorAttributeName:arr lineSpace:10];;
+        label.attributedText = [NSAttributedString transWithString:str colorAttributeName:arr lineSpace:10];;
         [self.scrollView addSubview:label];
         [label sizeToFit];
         [label mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -280,21 +280,6 @@
     [self.contentView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.bottom.equalTo(self.bgView).offset(30);
     }];
-}
-
-- (NSMutableAttributedString *)transWithString:(NSString *)str colorAttributeName:(NSArray *)colorAttriArr lineSpace:(CGFloat)lineSpace {
-    NSMutableAttributedString *attStr = [[NSMutableAttributedString alloc]initWithString:str];
-    //设置颜色
-    for (NSDictionary *dic in colorAttriArr) {
-        [attStr addAttribute:NSForegroundColorAttributeName value:dic[@"color"] range:NSRangeFromString(dic[@"range"])];
-    }
-    //设置行间距
-    if (lineSpace > 0.) {
-        NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
-        [paragraphStyle setLineSpacing:lineSpace];
-        [attStr addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, [str length])];
-    }
-    return attStr;
 }
 
 @end
