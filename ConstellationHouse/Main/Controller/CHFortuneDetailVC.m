@@ -51,6 +51,12 @@
     self.curIndex = 1;
     self.fModel = self.dataArray[self.curIndex];
     [self setupUI];
+    
+    
+}
+
+- (void)pageControlChanged:(UIPageControl*)sender {
+    NSLog(@"currentPage:%ld",sender.currentPage);
 }
 
 - (void)didReceiveMemoryWarning {
@@ -69,6 +75,7 @@
 - (UIButton *)changeBtn {
     if (nil == _changeBtn) {
         _changeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        _changeBtn.titleLabel.font = [UIFont systemFontOfSize:15];
         [_changeBtn setTitle:@"切换查看多样运势" forState:UIControlStateNormal];
         [_changeBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [_changeBtn setImage:[UIImage imageNamed:@"change"] forState:UIControlStateNormal];
@@ -153,11 +160,107 @@
 }
 
 - (void)updateUIWhenDataChange {
+    self.dateLabel.text = [NSString stringWithFormat:@"%@运势", self.fModel.dateStr];
+    self.indexsLabel.text = self.fModel.integrateIndex;
+    self.descLabel.text = self.fModel.integrateDesc;
+    [self updateChangedUI];
+}
+
+- (void)updateChangedUI {
+    for (UIView *sView in self.scrollView.subviews) {
+        if (sView.tag >= 10000 && sView.tag < 19999) {
+            [sView removeFromSuperview];
+        }
+    }
+    UILabel *lab0;
+    UIView *lineView0;
+    NSArray *item0Array = self.fModel.moreArray[0];
+    for (int i = 0; i < item0Array.count; i++) {
+        NSDictionary *dic = item0Array[i];
+        UILabel *label = [[UILabel alloc] init];
+        label.font = [UIFont systemFontOfSize:14.];
+        NSString *str = [NSString stringWithFormat:@"%@  %@", dic.allKeys[0], dic.allValues[0]];
+        NSRange range0 = NSMakeRange(0, [dic.allKeys[0] length]);
+        NSRange range1 = NSMakeRange(str.length - [dic.allValues[0] length], [dic.allValues[0] length]);
+        NSArray *arr = @[@{@"color": UIColorFromRGB(0x999999), @"range": NSStringFromRange(range0)}, @{@"color": UIColorFromRGB(0x000000), @"range": NSStringFromRange(range1)}];
+        label.attributedText = [NSAttributedString transWithString:str colorAttributeName:arr lineSpace:0.];
+        [self.scrollView addSubview:label];
+        [label sizeToFit];
+        label.tag = 10000 + i;
+        [label mas_makeConstraints:^(MASConstraintMaker *make) {
+            if (!lab0) {
+                make.left.equalTo(self.bgView).offset(20);
+                make.top.equalTo(self.nameLabel.mas_bottom).offset(24);
+                make.right.equalTo(self.scrollView.mas_centerX).offset(-10);
+            }else {
+                if (i % 2 != 0) {
+                    make.left.equalTo(self.scrollView.mas_centerX).offset(10);
+                    make.top.equalTo(lab0);
+                    make.right.equalTo(self.scrollView);
+                }else {
+                    make.left.equalTo(self.bgView).offset(18);
+                    make.top.equalTo(lab0.mas_bottom).offset(10);
+                    make.right.equalTo(self.scrollView.mas_centerX).offset(-10);
+                }
+            }
+        }];
+        lab0 = label;
+        if (i == item0Array.count - 1) {
+            lineView0 = [[UIView alloc] init];
+            lineView0.tag = 19000 + i;
+            lineView0.backgroundColor = UIColorFromRGB(0xeaeaea);
+            [self.scrollView addSubview:lineView0];
+            [lineView0 mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.left.equalTo(self.bgView).offset(18);
+                make.right.equalTo(self.bgView).offset(-18);
+                make.height.mas_equalTo(1);
+                make.top.equalTo(lab0.mas_bottom).offset(20);
+            }];
+        }
+    }
     
+    UILabel *lab1;
+    NSArray *item1Array = self.fModel.moreArray[1];
+    for (int i = 0; i < item1Array.count; i++) {
+        NSDictionary *dic = item1Array[i];
+        UILabel *label = [[UILabel alloc] init];
+        label.numberOfLines = 0;
+        label.font = [UIFont systemFontOfSize:15.];
+        NSString *str = [NSString stringWithFormat:@"%@:\n%@", dic.allKeys[0], dic.allValues[0]];
+        NSRange range0 = NSMakeRange(0, [dic.allKeys[0] length]);
+        NSRange range1 = NSMakeRange(str.length - [dic.allValues[0] length], [dic.allValues[0] length]);
+        NSArray *arr = @[@{@"color": [UIColor blueColor], @"range": NSStringFromRange(range0)}, @{@"color": UIColorFromRGB(0x000000), @"range": NSStringFromRange(range1)}];
+        label.attributedText = [NSAttributedString transWithString:str colorAttributeName:arr lineSpace:10.];
+        label.tag = 11000 + i;
+        [self.scrollView addSubview:label];
+        [label sizeToFit];
+        [label mas_makeConstraints:^(MASConstraintMaker *make) {
+            if (!lab1) {
+                make.top.equalTo(lineView0.mas_bottom).offset(20);
+            }else {
+                make.top.equalTo(lab1.mas_bottom).offset(20);
+            }
+            make.left.equalTo(self.bgView).offset(18);
+            make.right.equalTo(self.bgView).offset(-18);
+        }];
+        lab1 = label;
+    }
+    
+    [self.bgView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.scrollView).offset(10);
+        make.top.equalTo(self.imgView.mas_centerY).offset(-8);
+        make.right.equalTo(self.scrollView).offset(-10);
+        make.bottom.equalTo(lab1).offset(20);
+    }];
+    
+    [self.contentView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.equalTo(self.bgView).offset(30);
+    }];
 }
 
 - (void)setupUI {
     self.scrollView = [self addNormalScrollView];
+    self.scrollView.pagingEnabled = YES;
     [self.scrollView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.view);
     }];
@@ -196,7 +299,7 @@
         make.top.equalTo(self.imgView.mas_centerY).offset(10);
     }];
     
-    self.indexsLabel.text = [NSString stringWithFormat:@"综合指数：%@", self.fModel.integrateIndex];
+    self.indexsLabel.text = self.fModel.integrateIndex;
     [self.scrollView addSubview:self.indexsLabel];
     [self.indexsLabel sizeToFit];
     [self.indexsLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -220,87 +323,7 @@
         make.centerY.equalTo(self.descLabel);
     }];
     
-    UILabel *lab0;
-    UIView *lineView0;
-    NSArray *item0Array = self.fModel.moreArray[0];
-    for (int i = 0; i < item0Array.count; i++) {
-        NSDictionary *dic = item0Array[i];
-        UILabel *label = [[UILabel alloc] init];
-        label.font = [UIFont systemFontOfSize:14.];
-        NSString *str = [NSString stringWithFormat:@"%@  %@", dic.allKeys[0], dic.allValues[0]];
-        NSRange range0 = NSMakeRange(0, [dic.allKeys[0] length]);
-        NSRange range1 = NSMakeRange(str.length - [dic.allValues[0] length], [dic.allValues[0] length]);
-        NSArray *arr = @[@{@"color": UIColorFromRGB(0x999999), @"range": NSStringFromRange(range0)}, @{@"color": UIColorFromRGB(0x000000), @"range": NSStringFromRange(range1)}];
-        label.attributedText = [NSAttributedString transWithString:str colorAttributeName:arr lineSpace:0.];
-        [self.scrollView addSubview:label];
-        [label sizeToFit];
-        [label mas_makeConstraints:^(MASConstraintMaker *make) {
-            if (!lab0) {
-                make.left.equalTo(self.bgView).offset(20);
-                make.top.equalTo(self.nameLabel.mas_bottom).offset(24);
-                make.right.equalTo(self.scrollView.mas_centerX).offset(-10);
-            }else {
-                if (i % 2 != 0) {
-                    make.left.equalTo(self.scrollView.mas_centerX).offset(10);
-                    make.top.equalTo(lab0);
-                    make.right.equalTo(self.scrollView);
-                }else {
-                    make.left.equalTo(self.bgView).offset(18);
-                    make.top.equalTo(lab0.mas_bottom).offset(10);
-                    make.right.equalTo(self.scrollView.mas_centerX).offset(-10);
-                }
-            }
-        }];
-        lab0 = label;
-        if (i == item0Array.count - 1) {
-            lineView0 = [[UIView alloc] init];
-            lineView0.backgroundColor = UIColorFromRGB(0xeaeaea);
-            [self.scrollView addSubview:lineView0];
-            [lineView0 mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.left.equalTo(self.bgView).offset(18);
-                make.right.equalTo(self.bgView).offset(-18);
-                make.height.mas_equalTo(1);
-                make.top.equalTo(lab0.mas_bottom).offset(20);
-            }];
-        }
-    }
-    
-    UILabel *lab1;
-    NSArray *item1Array = self.fModel.moreArray[1];
-    for (int i = 0; i < item1Array.count; i++) {
-        NSDictionary *dic = item1Array[i];
-        UILabel *label = [[UILabel alloc] init];
-        label.numberOfLines = 0;
-        label.font = [UIFont systemFontOfSize:15.];
-        NSString *str = [NSString stringWithFormat:@"%@:\n%@", dic.allKeys[0], dic.allValues[0]];
-        NSRange range0 = NSMakeRange(0, [dic.allKeys[0] length]);
-        NSRange range1 = NSMakeRange(str.length - [dic.allValues[0] length], [dic.allValues[0] length]);
-        NSArray *arr = @[@{@"color": [UIColor blueColor], @"range": NSStringFromRange(range0)}, @{@"color": UIColorFromRGB(0x000000), @"range": NSStringFromRange(range1)}];
-        label.attributedText = [NSAttributedString transWithString:str colorAttributeName:arr lineSpace:10.];
-        [self.scrollView addSubview:label];
-        [label sizeToFit];
-        [label mas_makeConstraints:^(MASConstraintMaker *make) {
-            if (!lab1) {
-                make.top.equalTo(lineView0.mas_bottom).offset(20);
-            }else {
-                make.top.equalTo(lab1.mas_bottom).offset(20);
-            }
-            make.left.equalTo(self.bgView).offset(18);
-            make.right.equalTo(self.bgView).offset(-18);
-        }];
-        lab1 = label;
-    }
-    
-    [self.bgView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.scrollView).offset(10);
-        make.top.equalTo(self.imgView.mas_centerY).offset(-8);
-        make.right.equalTo(self.scrollView).offset(-10);
-        make.bottom.equalTo(lab1).offset(20);
-    }];
-    
-    [self.contentView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.bottom.equalTo(self.bgView).offset(30);
-    }];
+    [self updateChangedUI];
 }
 
 @end
