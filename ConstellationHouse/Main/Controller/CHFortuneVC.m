@@ -87,6 +87,7 @@
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     [collectionView deselectItemAtIndexPath:indexPath animated:YES];
     CHFortuneDetailVC *vc = [[CHFortuneDetailVC alloc] init];
+    vc.cModel = self.dataArray[indexPath.row];
     [self.navigationController pushViewController:vc animated:YES];
 }
 
