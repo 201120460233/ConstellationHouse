@@ -51,12 +51,6 @@
     self.curIndex = 1;
     self.fModel = self.dataArray[self.curIndex];
     [self setupUI];
-    
-    
-}
-
-- (void)pageControlChanged:(UIPageControl*)sender {
-    NSLog(@"currentPage:%ld",sender.currentPage);
 }
 
 - (void)didReceiveMemoryWarning {

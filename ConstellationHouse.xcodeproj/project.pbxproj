@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		9D5D74C70131636994CDC753 /* libPods-ConstellationHouse.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CA95BB77C282621DA86B2E02 /* libPods-ConstellationHouse.a */; };
+		A414493921212F6200676CFB /* CHPairDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A414493821212F6200676CFB /* CHPairDetailVC.m */; };
 		A47E934A2117EE4B0088556A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A47E93492117EE4B0088556A /* AppDelegate.m */; };
 		A47E93502117EE4B0088556A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A47E934E2117EE4B0088556A /* Main.storyboard */; };
 		A47E93522117EE4E0088556A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A47E93512117EE4E0088556A /* Assets.xcassets */; };
@@ -34,6 +35,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A414493721212F6200676CFB /* CHPairDetailVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CHPairDetailVC.h; sourceTree = "<group>"; };
+		A414493821212F6200676CFB /* CHPairDetailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CHPairDetailVC.m; sourceTree = "<group>"; };
 		A47E93452117EE4B0088556A /* ConstellationHouse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ConstellationHouse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A47E93482117EE4B0088556A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		A47E93492117EE4B0088556A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -201,6 +204,8 @@
 				A47E939C211AE8B50088556A /* CHFortuneDetailVC.m */,
 				A47E937F2118580C0088556A /* CHPairVC.h */,
 				A47E93802118580C0088556A /* CHPairVC.m */,
+				A414493721212F6200676CFB /* CHPairDetailVC.h */,
+				A414493821212F6200676CFB /* CHPairDetailVC.m */,
 				A47E9382211858290088556A /* CHAstrolabeVC.h */,
 				A47E9383211858290088556A /* CHAstrolabeVC.m */,
 				A47E9385211858390088556A /* CHZodiacVC.h */,
@@ -394,6 +399,7 @@
 				A47E93A4211BDB910088556A /* CHFortuneModel.m in Sources */,
 				A47E938F211A82060088556A /* ConstellationModel.m in Sources */,
 				A47E93AA211C0E8E0088556A /* NSAttributedString+EX.m in Sources */,
+				A414493921212F6200676CFB /* CHPairDetailVC.m in Sources */,
 				A47E9387211858390088556A /* CHZodiacVC.m in Sources */,
 				A47E93582117EE4E0088556A /* main.m in Sources */,
 				A47E934A2117EE4B0088556A /* AppDelegate.m in Sources */,
