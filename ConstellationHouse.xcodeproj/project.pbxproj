@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		9D5D74C70131636994CDC753 /* libPods-ConstellationHouse.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CA95BB77C282621DA86B2E02 /* libPods-ConstellationHouse.a */; };
 		A414493921212F6200676CFB /* CHPairDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A414493821212F6200676CFB /* CHPairDetailVC.m */; };
+		A414493B212171A600676CFB /* Pair.plist in Resources */ = {isa = PBXBuildFile; fileRef = A414493A212171A600676CFB /* Pair.plist */; };
+		A414494121218DA700676CFB /* CHPairModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A414494021218DA700676CFB /* CHPairModel.m */; };
 		A47E934A2117EE4B0088556A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A47E93492117EE4B0088556A /* AppDelegate.m */; };
 		A47E93502117EE4B0088556A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A47E934E2117EE4B0088556A /* Main.storyboard */; };
 		A47E93522117EE4E0088556A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A47E93512117EE4E0088556A /* Assets.xcassets */; };
@@ -37,6 +39,9 @@
 /* Begin PBXFileReference section */
 		A414493721212F6200676CFB /* CHPairDetailVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CHPairDetailVC.h; sourceTree = "<group>"; };
 		A414493821212F6200676CFB /* CHPairDetailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CHPairDetailVC.m; sourceTree = "<group>"; };
+		A414493A212171A600676CFB /* Pair.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Pair.plist; sourceTree = "<group>"; };
+		A414493F21218DA700676CFB /* CHPairModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CHPairModel.h; sourceTree = "<group>"; };
+		A414494021218DA700676CFB /* CHPairModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CHPairModel.m; sourceTree = "<group>"; };
 		A47E93452117EE4B0088556A /* ConstellationHouse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ConstellationHouse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A47E93482117EE4B0088556A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		A47E93492117EE4B0088556A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -177,6 +182,7 @@
 			children = (
 				A47E938B21197F490088556A /* Constellation.plist */,
 				A47E9399211AD2CD0088556A /* Fortune.plist */,
+				A414493A212171A600676CFB /* Pair.plist */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -226,6 +232,8 @@
 		A47E93682117F1F00088556A /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				A414493F21218DA700676CFB /* CHPairModel.h */,
+				A414494021218DA700676CFB /* CHPairModel.m */,
 				A47E93A2211BDB910088556A /* CHFortuneModel.h */,
 				A47E93A3211BDB910088556A /* CHFortuneModel.m */,
 				A47E938D211A82060088556A /* ConstellationModel.h */,
@@ -338,6 +346,7 @@
 				A47E939A211AD2CD0088556A /* Fortune.plist in Resources */,
 				A47E93552117EE4E0088556A /* LaunchScreen.storyboard in Resources */,
 				A47E93522117EE4E0088556A /* Assets.xcassets in Resources */,
+				A414493B212171A600676CFB /* Pair.plist in Resources */,
 				A47E93502117EE4B0088556A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -388,6 +397,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A414494121218DA700676CFB /* CHPairModel.m in Sources */,
 				A47E93A1211AF6FB0088556A /* CHFortuneCell.m in Sources */,
 				A47E939D211AE8B50088556A /* CHFortuneDetailVC.m in Sources */,
 				A47E936C2117F8870088556A /* CHCommonNC.m in Sources */,

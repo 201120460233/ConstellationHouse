@@ -9,6 +9,7 @@
 #import "CHPairDetailVC.h"
 #import "Masonry.h"
 #import "CHDefine.h"
+#import "CHPairModel.h"
 #import "CHFortuneModel.h"
 #import "ConstellationModel.h"
 #import "NSAttributedString+EX.h"
@@ -24,7 +25,7 @@
 @property (nonatomic, strong) UILabel *rightTitleLabel;
 @property (nonatomic, strong) UILabel *descLabel;
 
-@property (nonatomic, strong) CHFortuneModel *fModel;
+@property (nonatomic, strong) CHPairModel *pModel;
 @property (nonatomic, strong) NSMutableArray *dataArray;
 
 @end
@@ -34,19 +35,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"星座配对详情";
-    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"Fortune" ofType:@"plist"];
+    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"Pair" ofType:@"plist"];
     NSArray *arr = [NSArray arrayWithContentsOfFile:filePath];
     for (NSDictionary *dic in arr) {
-        if ([dic.allKeys[0] isEqualToString:self.leftModel.name]) {
-            for (NSArray *subArr in dic.allValues) {
-                for (NSDictionary *subDic in subArr) {
-                    CHFortuneModel *fModel = [[CHFortuneModel alloc] initWithDic:subDic];
-                    [self.dataArray addObject:fModel];
-                }
-            }
+        if ([dic[@"male"] isEqualToString:self.leftModel.name] && [dic[@"female"] isEqualToString:self.rightModel.name]) {
+            self.pModel = [[CHPairModel alloc] initWithDic:dic];
         }
     }
-    self.fModel = self.dataArray[0];
     [self setupUI];
 }
 
@@ -160,7 +155,7 @@
         make.top.width.height.equalTo(self.leftImgView);
     }];
     
-    self.leftTitleLabel.text = [self.leftModel.name stringByAppendingString:@"男"];
+    self.leftTitleLabel.text = [self.pModel.male stringByAppendingString:@"男"];
     [self.leftTitleLabel sizeToFit];
     [self.view addSubview:self.leftTitleLabel];
     [self.leftTitleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -169,7 +164,7 @@
         make.width.mas_equalTo(100);
     }];
     
-    self.rightTitleLabel.text = [self.leftModel.name stringByAppendingString:@"女"];
+    self.rightTitleLabel.text = [self.pModel.female stringByAppendingString:@"女"];
     [self.rightTitleLabel sizeToFit];
     [self.view addSubview:self.rightTitleLabel];
     [self.rightTitleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -177,7 +172,7 @@
         make.centerX.equalTo(self.rightImgView);
     }];
     
-    self.descLabel.text = @"相当理箱的一对";
+    self.descLabel.text = self.pModel.desc;
     [self.scrollView addSubview:self.descLabel];
     [self.descLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.width.equalTo(self.scrollView);
@@ -185,7 +180,7 @@
     }];
     
     UILabel *lab0;
-    NSArray *item0Array = self.fModel.moreArray[0];
+    NSArray *item0Array = self.pModel.moreArray[0];
     for (int i = 0; i < item0Array.count; i++) {
         NSDictionary *dic = item0Array[i];
         UILabel *label = [[UILabel alloc] init];
@@ -219,7 +214,7 @@
     }
     
     UILabel *lab1;
-    NSArray *item1Array = self.fModel.moreArray[1];
+    NSArray *item1Array = self.pModel.moreArray[1];
     for (int i = 0; i < item1Array.count; i++) {
         NSDictionary *dic = item1Array[i];
         UILabel *label = [[UILabel alloc] init];
@@ -239,8 +234,8 @@
             }else {
                 make.top.equalTo(lab1.mas_bottom).offset(30);
             }
-            make.left.equalTo(self.bgView).offset(18);
-            make.right.equalTo(self.bgView).offset(-18);
+            make.left.equalTo(self.bgView).offset(20);
+            make.right.equalTo(self.bgView).offset(-20);
         }];
         lab1 = label;
     }
