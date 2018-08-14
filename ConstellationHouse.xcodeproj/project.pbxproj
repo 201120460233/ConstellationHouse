@@ -11,6 +11,8 @@
 		A414493921212F6200676CFB /* CHPairDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A414493821212F6200676CFB /* CHPairDetailVC.m */; };
 		A414493B212171A600676CFB /* Pair.plist in Resources */ = {isa = PBXBuildFile; fileRef = A414493A212171A600676CFB /* Pair.plist */; };
 		A414494121218DA700676CFB /* CHPairModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A414494021218DA700676CFB /* CHPairModel.m */; };
+		A44F59402122B7EB0077060E /* websViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A44F593F2122B7EB0077060E /* websViewController.m */; };
+		A44F59432122BA420077060E /* NSString+EX.m in Sources */ = {isa = PBXBuildFile; fileRef = A44F59422122BA420077060E /* NSString+EX.m */; };
 		A47E934A2117EE4B0088556A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A47E93492117EE4B0088556A /* AppDelegate.m */; };
 		A47E93502117EE4B0088556A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A47E934E2117EE4B0088556A /* Main.storyboard */; };
 		A47E93522117EE4E0088556A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A47E93512117EE4E0088556A /* Assets.xcassets */; };
@@ -42,6 +44,10 @@
 		A414493A212171A600676CFB /* Pair.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Pair.plist; sourceTree = "<group>"; };
 		A414493F21218DA700676CFB /* CHPairModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CHPairModel.h; sourceTree = "<group>"; };
 		A414494021218DA700676CFB /* CHPairModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CHPairModel.m; sourceTree = "<group>"; };
+		A44F593E2122B7EA0077060E /* websViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = websViewController.h; sourceTree = "<group>"; };
+		A44F593F2122B7EB0077060E /* websViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = websViewController.m; sourceTree = "<group>"; };
+		A44F59412122BA420077060E /* NSString+EX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+EX.h"; sourceTree = "<group>"; };
+		A44F59422122BA420077060E /* NSString+EX.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+EX.m"; sourceTree = "<group>"; };
 		A47E93452117EE4B0088556A /* ConstellationHouse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ConstellationHouse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A47E93482117EE4B0088556A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		A47E93492117EE4B0088556A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -249,6 +255,8 @@
 				A47E936F2117F9C30088556A /* CHBaseVC.m */,
 				A47E936A2117F8870088556A /* CHCommonNC.h */,
 				A47E936B2117F8870088556A /* CHCommonNC.m */,
+				A44F593E2122B7EA0077060E /* websViewController.h */,
+				A44F593F2122B7EB0077060E /* websViewController.m */,
 			);
 			path = VC;
 			sourceTree = "<group>";
@@ -258,6 +266,8 @@
 			children = (
 				A47E9396211AC7E70088556A /* NSDate+EX.h */,
 				A47E9397211AC7E70088556A /* NSDate+EX.m */,
+				A44F59412122BA420077060E /* NSString+EX.h */,
+				A44F59422122BA420077060E /* NSString+EX.m */,
 				A47E93A8211C0E8E0088556A /* NSAttributedString+EX.h */,
 				A47E93A9211C0E8E0088556A /* NSAttributedString+EX.m */,
 				A47E93722117FABF0088556A /* UIViewController+NavigationBar.h */,
@@ -402,6 +412,7 @@
 				A47E939D211AE8B50088556A /* CHFortuneDetailVC.m in Sources */,
 				A47E936C2117F8870088556A /* CHCommonNC.m in Sources */,
 				A47E9384211858290088556A /* CHAstrolabeVC.m in Sources */,
+				A44F59432122BA420077060E /* NSString+EX.m in Sources */,
 				A47E937B211857AD0088556A /* CHSearchVC.m in Sources */,
 				A47E93622117F0B90088556A /* CHHomeVC.m in Sources */,
 				A47E93742117FABF0088556A /* UIViewController+NavigationBar.m in Sources */,
@@ -415,6 +426,7 @@
 				A47E934A2117EE4B0088556A /* AppDelegate.m in Sources */,
 				A47E93702117F9C30088556A /* CHBaseVC.m in Sources */,
 				A47E937E211857F60088556A /* CHFortuneVC.m in Sources */,
+				A44F59402122B7EB0077060E /* websViewController.m in Sources */,
 				A47E938A211952600088556A /* CHSearchResultVC.m in Sources */,
 				A47E93812118580C0088556A /* CHPairVC.m in Sources */,
 			);
