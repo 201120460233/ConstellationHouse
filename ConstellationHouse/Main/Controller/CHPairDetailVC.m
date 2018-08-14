@@ -184,8 +184,10 @@
     for (int i = 0; i < item0Array.count; i++) {
         NSDictionary *dic = item0Array[i];
         UILabel *label = [[UILabel alloc] init];
+        label.numberOfLines = 0;
+        label.lineBreakMode = NSLineBreakByWordWrapping;
         label.font = [UIFont systemFontOfSize:14.];
-        NSString *str = [NSString stringWithFormat:@"%@  %@", dic.allKeys[0], dic.allValues[0]];
+        NSString *str = [NSString stringWithFormat:@"%@ %@", dic.allKeys[0], dic.allValues[0]];
         NSRange range0 = NSMakeRange(0, [dic.allKeys[0] length]);
         NSRange range1 = NSMakeRange(str.length - [dic.allValues[0] length], [dic.allValues[0] length]);
         NSArray *arr = @[@{@"color": UIColorFromRGBA(0xffffff, .6), @"range": NSStringFromRange(range0)}, @{@"color": UIColorFromRGB(0xffffff), @"range": NSStringFromRange(range1)}];
@@ -197,16 +199,16 @@
             if (!lab0) {
                 make.left.equalTo(self.bgView).offset(20);
                 make.top.equalTo(self.descLabel.mas_bottom).offset(30);
-                make.right.equalTo(self.scrollView.mas_centerX).offset(-10);
+                make.width.mas_equalTo(110);
             }else {
                 if (i % 2 != 0) {
-                    make.left.equalTo(self.scrollView.mas_centerX).offset(10);
+                    make.left.equalTo(lab0.mas_right).offset(10);
                     make.top.equalTo(lab0);
-                    make.right.equalTo(self.scrollView);
+                    make.right.equalTo(self.bgView).offset(-20);
                 }else {
-                    make.left.equalTo(self.bgView).offset(18);
+                    make.left.equalTo(self.bgView).offset(20);
                     make.top.equalTo(lab0.mas_bottom).offset(10);
-                    make.right.equalTo(self.scrollView.mas_centerX).offset(-10);
+                    make.width.mas_equalTo(110);
                 }
             }
         }];

@@ -147,6 +147,7 @@
 - (void)setupUI {
     UILabel *label = [[UILabel alloc] init];
     label.text = @"点击下面的星座图可选择心仪的星座配对哦～";
+    label.numberOfLines = 0;
     label.textColor = [UIColor blackColor];
     label.font = [UIFont systemFontOfSize:17];
     label.textAlignment = NSTextAlignmentCenter;
