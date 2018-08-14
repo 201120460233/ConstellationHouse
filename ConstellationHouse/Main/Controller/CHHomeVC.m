@@ -40,6 +40,8 @@
 - (UIImageView *)bgImgView {
     if (nil == _bgImgView) {
         _bgImgView = [[UIImageView alloc] init];
+        _bgImgView.image = [UIImage imageNamed:@"bgImg"];
+        _bgImgView.contentMode = UIViewContentModeScaleAspectFill;
     }
     return _bgImgView;
 }
@@ -60,66 +62,58 @@
 
 #pragma mark - Private method
 - (void)initData {
-    self.dataDic[@"icon"] = @[@"search", @"fortune", @"pair", @"astrolabe", @"zodiac"];
-    self.dataDic[@"title"] = @[@"星座查询", @"星座运势", @"星座配对", @"星盘", @"十二生肖"];
+    self.dataDic[@"icon"] = @[@"search", @"fortune", @"pair"];
+    self.dataDic[@"title"] = @[@"星座查询", @"星座运势", @"星座配对"];
 }
 
 - (void)setupUI {
     self.title = @"星座屋";
     
-    [self.view addSubview:self.bgImgView];
-    self.bgImgView.image = [UIImage imageNamed:@"bgImg.jpg"];
-    self.bgImgView.contentMode = UIViewContentModeScaleAspectFill;
-    [self.bgImgView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.left.width.height.equalTo(self.view);
-    }];
-    
-    
     [self.view addSubview:self.bgView];
-    self.bgView.backgroundColor = UIColorFromRGBA(0xffffff, .2);
-    self.bgView.layer.cornerRadius = 10.f;
+    self.bgView.backgroundColor = UIColorFromRGB(0xffffff);
+    self.bgView.layer.cornerRadius = 20.f;
     self.bgView.layer.masksToBounds = YES;
     [self.bgView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.center.equalTo(self.view);
-        make.width.mas_equalTo(300);
-        make.height.mas_equalTo(460);
+        make.edges.equalTo(self.view).insets(UIEdgeInsetsMake(20, 20, 20, 20));
     }];
     
-    UIButton *btn0;
+    [self.bgView addSubview:self.bgImgView];
+    [self.bgImgView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(self.bgView);
+    }];
+    
+    UIImageView *imgView0;
     NSArray *arr = self.dataDic[@"icon"];
     for (int i = 0; i < arr.count; i++) {
-        UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [btn setBackgroundImage:[UIImage imageNamed:arr[i]] forState:UIControlStateNormal];
-//        [btn setTitle:self.dataDic[@"title"][i] forState:UIControlStateNormal];
-        [btn setTitleColor:UIColorFromRGB(0x666666) forState:UIControlStateNormal];
-        [btn setTag:i];
-        [btn addTarget:self action:@selector(btnClicked:) forControlEvents:UIControlEventTouchUpInside];
-        [self.bgView addSubview:btn];
+        UIImageView *imgView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:arr[i]]];
+        imgView.tag = i;
+        imgView.layer.cornerRadius = 50;
+        imgView.layer.masksToBounds = YES;
+        imgView.userInteractionEnabled = YES;
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
+        [imgView addGestureRecognizer:tap];
+        [self.bgView addSubview:imgView];
         
-        [btn mas_makeConstraints:^(MASConstraintMaker *make) {
+        [imgView mas_makeConstraints:^(MASConstraintMaker *make) {
             if (i % 2 == 0) {
                 make.right.equalTo(self.bgView.mas_centerX).offset(-15);
             }else {
                 make.left.equalTo(self.bgView.mas_centerX).offset(15);
             }
-            if (btn0) {
-                if (i % 2 == 0) {
-                   make.top.equalTo(btn0.mas_bottom).offset(30);
-                }else {
-                    make.top.equalTo(btn0);
-                }
+            if (imgView0) {
+                make.top.equalTo(imgView0.mas_bottom).offset(40);
             }else {
-                make.top.equalTo(self.bgView).offset(50);
+                make.top.equalTo(self.bgView).offset(70);
             }
             make.width.height.mas_equalTo(100);
         }];
-        btn0 = btn;
+        imgView0 = imgView;
     }
 }
 
-- (void)btnClicked:(UIButton *)sender {
-    NSLog(@"clicked index:%ld ", (long)sender.tag);
-    switch (sender.tag) {
+- (void)handleTap:(UITapGestureRecognizer *)tapGes {
+    NSLog(@"clicked index:%ld ", (long)tapGes.view.tag);
+    switch (tapGes.view.tag) {
         case 0:{
             CHSearchVC *vc = [[CHSearchVC alloc] init];
             [self.navigationController pushViewController:vc animated:YES];

@@ -9,6 +9,7 @@
 #import "CHFortuneCell.h"
 #import "ConstellationModel.h"
 #import "Masonry.h"
+#import "CHDefine.h"
 
 @interface CHFortuneCell()
 
@@ -23,6 +24,8 @@
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
+        self.layer.borderColor = UIColorFromRGB(0x75c2f6).CGColor;
+        self.layer.borderWidth = 1.f;
         self.layer.cornerRadius = 8.f;
         self.layer.masksToBounds = YES;
         [self.contentView addSubview:self.imgView];
@@ -36,7 +39,7 @@
 - (UIImageView *)imgView {
     if (nil == _imgView) {
         _imgView = [[UIImageView alloc] init];
-        _imgView.layer.cornerRadius = 40.f;
+        _imgView.layer.cornerRadius = 36.f;
         _imgView.layer.masksToBounds = YES;
         _imgView.contentMode = UIViewContentModeScaleAspectFit;
     }
@@ -46,7 +49,7 @@
 - (UILabel *)nameLabel {
     if (nil == _nameLabel) {
         _nameLabel = [[UILabel alloc] init];
-        _nameLabel.textColor = [UIColor blackColor];
+        _nameLabel.textColor = UIColorFromRGB(0x000000);
         _nameLabel.font = [UIFont systemFontOfSize:16];
         _nameLabel.textAlignment = NSTextAlignmentCenter;
     }
@@ -56,7 +59,7 @@
 - (UILabel *)dateLabel {
     if (nil == _dateLabel) {
         _dateLabel = [[UILabel alloc] init];
-        _dateLabel.textColor = [UIColor blueColor];
+        _dateLabel.textColor = UIColorFromRGB(0x666666);
         _dateLabel.font = [UIFont systemFontOfSize:14];
         _dateLabel.textAlignment = NSTextAlignmentCenter;
     }
@@ -68,20 +71,20 @@
     self.imgView.image = [UIImage imageNamed:cModel.icon];
     self.nameLabel.text = cModel.name;
     self.dateLabel.text = cModel.dateStr;
-    [self.nameLabel sizeToFit];
-    [self.dateLabel sizeToFit];
+//    [self.nameLabel sizeToFit];
+//    [self.dateLabel sizeToFit];
     [self layoutAllSubviews];
 }
 
 - (void)layoutAllSubviews {
     [self.imgView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(self.contentView);
-        make.top.equalTo(self.contentView);
-        make.width.height.mas_equalTo(80);
+        make.top.equalTo(self.contentView).offset(8);
+        make.width.height.mas_equalTo(72);
     }];
     
     [self.nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.width.equalTo(self.contentView);
+        make.left.right.equalTo(self.contentView);
         make.top.equalTo(self.imgView.mas_bottom).offset(5);
     }];
     

@@ -71,7 +71,7 @@
         _changeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         _changeBtn.titleLabel.font = [UIFont systemFontOfSize:15];
         [_changeBtn setTitle:@"切换查看多样运势" forState:UIControlStateNormal];
-        [_changeBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [_changeBtn setTitleColor:UIColorFromRGB(0xff7a8a) forState:UIControlStateNormal];
         [_changeBtn setImage:[UIImage imageNamed:@"change"] forState:UIControlStateNormal];
         [_changeBtn addTarget:self action:@selector(changeBtnClicked) forControlEvents:UIControlEventTouchUpInside];
     }
@@ -117,7 +117,7 @@
     if (nil == _descLabel) {
         _descLabel = [[UILabel alloc] init];
         _descLabel.textColor = [UIColor blackColor];
-        _descLabel.font = [UIFont boldSystemFontOfSize:14];
+        _descLabel.font = [UIFont systemFontOfSize:15];
     }
     return _descLabel;
 }
@@ -125,7 +125,7 @@
 - (UILabel *)nameLabel {
     if (nil == _nameLabel) {
         _nameLabel = [[UILabel alloc] init];
-        _nameLabel.textColor = [UIColor blueColor];
+        _nameLabel.textColor = UIColorFromRGB(0xff7a8a);
         _nameLabel.font = [UIFont boldSystemFontOfSize:22.];
         _nameLabel.textAlignment = NSTextAlignmentCenter;
     }
@@ -223,8 +223,8 @@
         NSString *str = [NSString stringWithFormat:@"%@:\n%@", dic.allKeys[0], dic.allValues[0]];
         NSRange range0 = NSMakeRange(0, [dic.allKeys[0] length]);
         NSRange range1 = NSMakeRange(str.length - [dic.allValues[0] length], [dic.allValues[0] length]);
-        NSArray *arr = @[@{@"color": [UIColor blueColor], @"range": NSStringFromRange(range0)}, @{@"color": UIColorFromRGB(0x000000), @"range": NSStringFromRange(range1)}];
-        label.attributedText = [NSAttributedString transWithString:str colorAttributeName:arr lineSpace:10.];
+        NSArray *arr = @[@{@"color": UIColorFromRGB(0x000000), @"range": NSStringFromRange(range0)}, @{@"color": UIColorFromRGB(0x999999), @"range": NSStringFromRange(range1)}];
+        label.attributedText = [NSAttributedString transWithString:str colorAttributeName:arr lineSpace:8.];
         label.tag = 11000 + i;
         [self.scrollView addSubview:label];
         [label sizeToFit];
@@ -232,7 +232,7 @@
             if (!lab1) {
                 make.top.equalTo(lineView0.mas_bottom).offset(20);
             }else {
-                make.top.equalTo(lab1.mas_bottom).offset(20);
+                make.top.equalTo(lab1.mas_bottom).offset(24);
             }
             make.left.equalTo(self.bgView).offset(18);
             make.right.equalTo(self.bgView).offset(-18);
@@ -244,7 +244,7 @@
         make.left.equalTo(self.scrollView).offset(10);
         make.top.equalTo(self.imgView.mas_centerY).offset(-8);
         make.right.equalTo(self.scrollView).offset(-10);
-        make.bottom.equalTo(lab1).offset(20);
+        make.bottom.equalTo(lab1).offset(30);
     }];
     
     [self.contentView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -280,7 +280,7 @@
     [self.scrollView addSubview:self.imgView];
     [self.imgView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.scrollView).offset(10);
-        make.left.equalTo(self.scrollView).offset(10);
+        make.left.equalTo(self.scrollView).offset(25);
         make.width.height.mas_equalTo(120);
     }];
     
@@ -288,7 +288,7 @@
     [self.scrollView addSubview:self.dateLabel];
     [self.dateLabel sizeToFit];
     [self.dateLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.imgView.mas_right).offset(20);
+        make.left.equalTo(self.imgView.mas_right).offset(30);
         make.right.equalTo(self.scrollView).offset(-10);
         make.top.equalTo(self.imgView.mas_centerY).offset(10);
     }];
